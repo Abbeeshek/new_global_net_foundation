@@ -1,0 +1,5 @@
+import MemberShell from '../member-shell';
+import { chatGPTSignInPath,getChatGPTUser } from '../chatgpt-auth';
+import { redirect } from 'next/navigation';
+export const dynamic='force-dynamic';
+export default async function Login(){if(await getChatGPTUser())redirect('/dashboard');return <MemberShell><main className="auth-wrap"><div className="auth-story"><span className="eyebrow">YOUR COMMUNITY, CLOSER</span><h1>Good to have<br/>you back.</h1><p>Reconnect with your interests. Keep your details up to date. Find your place in the foundation community.</p><a href="/">← Back to the foundation</a></div><section className="auth-card"><span className="eyebrow">MEMBER LOGIN</span><h2>Welcome back.</h2><p>Sign in securely to access your personal dashboard.</p><a className="button" href={chatGPTSignInPath('/dashboard')} target="_top">Continue with ChatGPT ↗</a><p className="fine">Your ChatGPT account provides secure sign-in. We never ask for or store your password.</p><hr/><p>New to the foundation? <a href="/signup">Create your community profile →</a></p></section></main></MemberShell>}

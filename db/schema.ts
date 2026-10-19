@@ -1,0 +1,4 @@
+import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+export const members=sqliteTable('foundation_members',{
+ userId:text('user_id').primaryKey(), memberId:text('member_id').notNull().unique(),email:text('email').notNull(),name:text('name').notNull(),phone:text('phone').notNull().default(''),state:text('state').notNull().default(''),city:text('city').notNull().default(''),interests:text('interests').notNull().default('[]'),updates:integer('updates',{mode:'boolean'}).notNull().default(false),consentAt:text('consent_at').notNull(),createdAt:text('created_at').notNull(),updatedAt:text('updated_at').notNull()
+});
