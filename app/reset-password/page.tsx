@@ -1,0 +1,2 @@
+import MemberShell from '../member-shell';import AuthForm from '../auth-form';import {authConfigured} from '../../lib/supabase/server';
+export const dynamic='force-dynamic';export default async function Page({searchParams}:{searchParams:Promise<{recover?:string}>}){const p=await searchParams;return <MemberShell><main className="privacy panel"><h1>Reset your password.</h1>{authConfigured()?<AuthForm mode={p.recover?'recover':'password'}/>:<p>Member accounts are being set up. Please check back soon.</p>}<p><a href="/login">← Return to login</a></p></main></MemberShell>}
